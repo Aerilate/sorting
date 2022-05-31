@@ -19,13 +19,15 @@ func main() {
 		sorted = append(sorted, i)
 	}
 
-	type sortingAlgo func ([]int)
+	type sortingAlgo func([]int)
 	algos := []sortingAlgo{
-		sort.Heapsort, 
-		sort.Mergesort, 
+		sort.Heapsort,
+		sort.Mergesort,
 		sort.Quicksort,
 		sort.MergesortConcurrent,
 		sort.QuicksortConcurrent,
+		// sort.Insertionsort,
+		sort.Radixsort,
 	}
 
 	fmt.Printf("%-20v %-10v %v\n\n", "Algorithm", "Time (ms)", "Error")
@@ -56,7 +58,7 @@ func validated(nums []int) bool {
 	return true
 }
 
-func benchmark(sort func ([]int), input []int) (elapsed int64, err error) {
+func benchmark(sort func([]int), input []int) (elapsed int64, err error) {
 	start := time.Now()
 	sort(input)
 	elapsed = time.Since(start).Milliseconds()
@@ -69,5 +71,5 @@ func benchmark(sort func ([]int), input []int) (elapsed int64, err error) {
 
 func getFuncName(i interface{}) string {
 	name := runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
-    return strings.Split(name, ".")[2]
+	return strings.Split(name, ".")[2]
 }
