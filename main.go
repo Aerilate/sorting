@@ -24,16 +24,18 @@ func main() {
 		sort.Heapsort, 
 		sort.Mergesort, 
 		sort.Quicksort,
+		sort.MergesortConcurrent,
+		sort.QuicksortConcurrent,
 	}
 
-	fmt.Printf("%-12v %-10v %v\n\n", "Algorithm", "Time (ms)", "Error")
+	fmt.Printf("%-20v %-10v %v\n\n", "Algorithm", "Time (ms)", "Error")
 	for _, algo := range algos {
 		unsorted := make([]int, len(sorted))
 		copy(unsorted, sorted)
 		Shuffle(unsorted)
 
 		elapsed, err := benchmark(algo, unsorted)
-		fmt.Printf("%-12v %-10v %v\n", getFuncName(algo), elapsed, err)
+		fmt.Printf("%-20v %-10v %v\n", getFuncName(algo), elapsed, err)
 	}
 }
 
