@@ -7,11 +7,13 @@ import (
 	"github.com/Aerilate/sorting/sort"
 )
 
-const SIZE = 1000000
+const INPUT_SIZE = 1000000
 
 func main() {
 	benchmark := benchmark.Benchmarker[[]int]{
 		Funcs: []func([]int){
+			// sort.NoSort,
+			sort.StdLibSort,
 			sort.Heapsort,
 			sort.Mergesort,
 			sort.Quicksort,
@@ -19,15 +21,15 @@ func main() {
 			sort.QuicksortConcurrent,
 			sort.Radixsort,
 		},
-		InputGenerator:  prepareInput(),
+		InputGenerator:  shuffleInputFunc(),
 		OutputValidator: isSorted,
 	}
-	fmt.Println(benchmark.Run().String())
+	fmt.Println(benchmark.Run().SortByElapsed().String())
 }
 
-func prepareInput() func() []int {
+func shuffleInputFunc() func() []int {
 	var sorted []int
-	for i := 0; i < SIZE; i++ {
+	for i := 0; i < INPUT_SIZE; i++ {
 		sorted = append(sorted, i)
 	}
 
