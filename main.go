@@ -19,7 +19,7 @@ func main() {
 			sort.Quicksort,
 			sort.MergesortConcurrent,
 			sort.QuicksortConcurrent,
-			sort.Radixsort,
+			sort.LSDRadixsort,
 		},
 		InputGenerator:  shuffleInputFunc(),
 		OutputValidator: isSorted,
