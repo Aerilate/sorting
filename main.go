@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/Aerilate/sorting/benchmark"
 	"github.com/Aerilate/sorting/sort"
@@ -13,13 +15,13 @@ func main() {
 	benchmark := benchmark.Benchmarker[[]int]{
 		Funcs: []func([]int){
 			// sort.NoSort,
-			sort.StdLibSort,
-			sort.Heapsort,
+			// sort.StdLibSort,
+			// sort.Heapsort,
 			sort.Mergesort,
 			sort.Quicksort,
 			sort.MergesortConcurrent,
 			sort.QuicksortConcurrent,
-			sort.LSDRadixsort,
+			// sort.LSDRadixsort,
 		},
 		InputGenerator:  shuffleInputFunc(),
 		OutputValidator: isSorted,
@@ -32,6 +34,7 @@ func shuffleInputFunc() func() []int {
 	for i := 0; i < INPUT_SIZE; i++ {
 		sorted = append(sorted, i)
 	}
+	rand.Seed(time.Now().UTC().UnixNano())
 
 	return func() []int {
 		unsorted := make([]int, len(sorted))

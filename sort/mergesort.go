@@ -9,6 +9,10 @@ func ms(nums []int, lo int, hi int) {
 	if size == 0 || size == 1 {
 		return
 	}
+	if size < SWITCH_TO_INSERTION {
+		Insertionsort(nums[lo : hi+1])
+		return
+	}
 
 	median := lo + (hi-lo)/2
 	ms(nums, lo, median)
@@ -19,7 +23,7 @@ func ms(nums []int, lo int, hi int) {
 func merge(arr []int, lo1 int, hi1 int, lo2 int, hi2 int) {
 	size := hi2 - lo1 + 1
 	arrCopy := make([]int, size)
-	
+
 	curr1 := lo1
 	curr2 := lo2
 

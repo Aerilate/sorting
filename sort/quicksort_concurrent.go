@@ -2,15 +2,16 @@ package sort
 
 import "sync"
 
-// At small inputs, the overhead for concurrency primitives is not worth it anymore
-const STOP_CONCURRENT_QUICKSORT_AT_SIZE = 1000
-
 func QuicksortConcurrent(nums []int) {
 	qsc(nums, 0, len(nums)-1)
 }
 
 func qsc(nums []int, lo int, hi int) {
 	if lo < 0 || hi < 0 || hi <= lo {
+		return
+	}
+	if hi-lo < SWITCH_TO_INSERTION {
+		Insertionsort(nums[lo : hi+1])
 		return
 	}
 
