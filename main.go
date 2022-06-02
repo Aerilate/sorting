@@ -14,14 +14,14 @@ const INPUT_SIZE = 1000000
 func main() {
 	benchmark := benchmark.Benchmarker[[]int]{
 		Funcs: []func([]int){
-			// sort.NoSort,
-			// sort.StdLibSort,
-			// sort.Heapsort,
+			sort.StdLibSort,
+			sort.Heapsort,
 			sort.Mergesort,
 			sort.Quicksort,
 			sort.MergesortConcurrent,
 			sort.QuicksortConcurrent,
-			// sort.LSDRadixsort,
+			sort.LSDRadixsort,
+			sort.Timsort,
 		},
 		InputGenerator:  shuffleInputFunc(),
 		OutputValidator: isSorted,
