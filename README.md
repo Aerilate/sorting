@@ -1,4 +1,4 @@
-# Sorting :bar_chart:
+# :bar_chart: Sorting
 A collection of sorting algorithms with a small benchmarking library, implemented in Go.
 \
 \
