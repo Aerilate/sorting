@@ -20,11 +20,12 @@ go run main.go
 # The output should look something like this:
 Algorithm                Time (ms)
 ----------------------------------
-MergesortConcurrent             66
-QuicksortConcurrent             98
-Quicksort                      116
-LSDRadixsort                   135
-StdLibSort                     139
-Mergesort                      153
-Heapsort                       320
+MergesortConcurrent             27
+LSDRadixsort                    30
+QuicksortConcurrent             32
+Quicksort                       52
+Mergesort                       76
+Timsort                        107
+StdLibSort                     124
+Heapsort                       275
 ~~~
