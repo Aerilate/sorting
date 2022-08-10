@@ -14,16 +14,10 @@ This project is an exercise using the Go standard library. Most of the creativit
 ## Usage
 To run the benchmark yourself, you will need Go 1.18 installed.
 ~~~bash
-# Clone the repo
-git clone https://github.com/Aerilate/sorting.git
-
-# Go into the repo and run
-cd sorting
+# Run
 go run main.go
-~~~
-~~~bash
+
 # The output should look something like this:
-$ go run main.go
 Algorithm                Time (ms)
 ----------------------------------
 MergesortConcurrent             66
